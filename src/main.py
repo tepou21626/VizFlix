@@ -39,14 +39,18 @@ class MainWindow(QMainWindow):
         global widgets
         widgets = self.ui
 
+        # ADD WIDGETS TO THEIR RESPECTIVE PAGES
+        # ///////////////////////////////////////////////////////////////
+        self.home_page = HomePage(widgets.home)
+
         # USE CUSTOM TITLE BAR | USE AS "False" FOR MAC OR LINUX
         # ///////////////////////////////////////////////////////////////
         Settings.ENABLE_CUSTOM_TITLE_BAR = True
 
         # APP NAME
         # ///////////////////////////////////////////////////////////////
-        title = "PyDracula - Modern GUI"
-        description = "PyDracula APP - Theme with colors based on Dracula for Python."
+        title = "VizFlix"
+        description = "VizFlix APP - Create your own animations."
         # APPLY TEXTS
         self.setWindowTitle(title)
         widgets.titleRightInfo.setText(description)
@@ -161,4 +165,4 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon("icon.ico"))
     window = MainWindow()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
