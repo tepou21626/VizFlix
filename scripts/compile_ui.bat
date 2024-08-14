@@ -18,8 +18,8 @@ ECHO Finished compiling resource file!
 
 ECHO Compiling .ui files...
 
-FOR /F "delims=.ui" %%f IN ('dir %UI_DIR% /b') DO (
-    pyside6-uic %UI_DIR%\%%f.ui -o %MODULES_DIR%\ui_%%f.py
+FOR %%f IN (%UI_DIR%\*.ui) DO ( 
+    pyside6-uic %UI_DIR%\%%~nf.ui -o %MODULES_DIR%\ui_%%~nf.py
 )
 
 ECHO Finished compiling .ui files!

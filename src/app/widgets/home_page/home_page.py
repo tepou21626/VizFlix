@@ -3,20 +3,21 @@ from PySide6.QtGui import *
 from PySide6.QtWidgets import *
 
 from app.modules import *
+from app.widgets import *
 
 class HomePage(QWidget):
-    def __init__(self, parent):
-        # SETUP UI
+    def __init__(self, ctx):
         QWidget.__init__(self)
-        self.parent = parent
-        self.setParent(parent)
+        self.ctx = ctx
+        ctx.ui.home.layout().addWidget(self)
 
-        self.home_ui = Ui_Home()
-        self.home_ui.setupUi(self)
-
-        # ADD WIDGET TO OBJECT
-        self.layout_ = QVBoxLayout()
-        self.layout_.addChildWidget(self.home_ui.frame)
-        self.setLayout(self.layout_)
-
+        # SETUP UI
+        self.ui = Ui_Home()
+        self.setup()
         
+
+    def setup(self):
+        self.ui.setupUi(self)
+        self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        self.ui.create_project_push_button.clicked.connect(self.ctx.ui.btn_new.click)
+

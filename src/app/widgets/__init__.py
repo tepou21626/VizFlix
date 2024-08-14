@@ -16,3 +16,4 @@
 
 from . custom_grips import CustomGrip
 from . home_page import HomePage
+from . new_project_page import NewProjectPage

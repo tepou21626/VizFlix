@@ -41,7 +41,8 @@ class MainWindow(QMainWindow):
 
         # ADD WIDGETS TO THEIR RESPECTIVE PAGES
         # ///////////////////////////////////////////////////////////////
-        self.home_page = HomePage(widgets.home)
+        self.home_page = HomePage(self)
+        self.new_project_page = NewProjectPage(self)
 
         # USE CUSTOM TITLE BAR | USE AS "False" FOR MAC OR LINUX
         # ///////////////////////////////////////////////////////////////
@@ -131,8 +132,8 @@ class MainWindow(QMainWindow):
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
         # SHOW NEW PAGE
-        if btnName == "btn_new":
-            widgets.stackedWidget.setCurrentWidget(widgets.new_page) # SET PAGE
+        if btnName == "btn_new" or btnName == "create_project_push_button":
+            widgets.stackedWidget.setCurrentWidget(widgets.new_project) # SET PAGE
             UIFunctions.resetStyle(self, btnName) # RESET ANOTHERS BUTTONS SELECTED
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet())) # SELECT MENU
 
@@ -153,13 +154,7 @@ class MainWindow(QMainWindow):
     # ///////////////////////////////////////////////////////////////
     def mousePressEvent(self, event):
         # SET DRAG POS WINDOW
-        self.dragPos = event.globalPos()
-
-        # PRINT MOUSE EVENTS
-        if event.buttons() == Qt.LeftButton:
-            print('Mouse click: LEFT CLICK')
-        if event.buttons() == Qt.RightButton:
-            print('Mouse click: RIGHT CLICK')
+        self.dragPos = event.globalPosition().toPoint()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
