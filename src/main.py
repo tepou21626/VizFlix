@@ -39,6 +39,10 @@ class MainWindow(QMainWindow):
         global widgets
         widgets = self.ui
 
+        # LOAD PROJECTS
+        # ///////////////////////////////////////////////////////////////
+        self.project_manager = ProjectManager(f"{os.getcwd()}/../projects")
+
         # ADD WIDGETS TO THEIR RESPECTIVE PAGES
         # ///////////////////////////////////////////////////////////////
         self.home_page = HomePage(self)

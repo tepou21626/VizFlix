@@ -30,3 +30,6 @@ from . ui_functions import *
 
 # APP FUNCTIONS
 from . app_functions import *
+
+# PROJECT CLASSES
+from . project_manager import *
